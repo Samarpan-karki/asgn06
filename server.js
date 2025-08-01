@@ -8,7 +8,7 @@
 * 
 *  Name: Samarpan Karki Student ID: 172908238 Date: Aug 01,2025
 *
-*  Published URL: _____________________
+*  Published URL: https://asgn06-92e555zsd-samarpan-karkis-projects.vercel.app/
 *
 ********************************************************************************/
 
