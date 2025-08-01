@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="nord">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Climate Solutions</title>
+    <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+    <%- include('partials/navbar', {page: '/about'}) %>
+
+    <div class="container mx-auto p-4">
+        <div class="hero bg-base-200 rounded-lg p-8 my-8 shadow-lg">
+            <div class="hero-content text-left justify-start w-full">
+                <div class="max-w-md">
+                    <h1 class="text-5xl font-bold">About Me</h1>
+                    <p class="py-6">
+                        Who's this guy?
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-8 items-center">
+            <div class="flex justify-center">
+                <img src="https://images.pexels.com/photos/2122406/pexels-photo-2122406.jpeg"
+                     alt="Your Image"
+                     class="rounded-lg shadow-xl max-w-full h-auto object-cover">
+            </div>
+            <div class="prose lg:prose-xl">
+                <h2 class="text-3xl font-bold">I'm Haein Lee!</h2>
+                <p>
+                    I am currently taking the WEB322 class. I saved up funds to study in Canada by driving a forklift for 1 year and 6 months in Australia.
+                    Although I considered settling down in Australia due to its good weather, I truly love snow. That's why I'm here now.
+                    My hobby is exercise. If I don't exercise, my back and knees ache because of my age.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

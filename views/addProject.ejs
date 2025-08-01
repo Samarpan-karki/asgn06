@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="nord">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Project - Climate Solutions</title>
+    <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+    <%- include('partials/navbar', {page: '/solutions/addProject'}) %>
+
+    <div class="hero min-h-96 bg-base-200">
+        <div class="hero-content text-center">
+            <div class="max-w-lg">
+                <h1 class="text-5xl font-bold">Add Project</h1>
+                <p class="py-6">Create a new climate solution project to add to our collection.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mx-auto p-4">
+        <div class="card bg-base-100 shadow-xl">
+            <div class="card-body">
+                <h2 class="card-title">Project Information</h2>
+                
+                <form action="/solutions/addProject" method="POST" class="space-y-6">
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Title</span>
+                        </label>
+                        <input type="text" name="title" class="input input-bordered" required>
+                    </div>
+
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Feature Image URL</span>
+                        </label>
+                        <input type="url" name="feature_img_url" class="input input-bordered" required>
+                    </div>
+
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Sector</span>
+                        </label>
+                        <select name="sector_id" class="select select-bordered" required>
+                            <option disabled selected>Choose a sector</option>
+                            <% sectors.forEach(sector => { %>
+                                <option value="<%= sector.id %>">
+                                    <%= sector.sector_name %>
+                                </option>
+                            <% }) %>
+                        </select>
+                    </div>
+
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Introduction (Short)</span>
+                        </label>
+                        <textarea name="intro_short" class="textarea textarea-bordered h-24" required></textarea>
+                    </div>
+
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Summary (Short)</span>
+                        </label>
+                        <textarea name="summary_short" class="textarea textarea-bordered h-24" required></textarea>
+                    </div>
+
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Impact</span>
+                        </label>
+                        <textarea name="impact" class="textarea textarea-bordered h-32" required></textarea>
+                    </div>
+
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Original Source URL</span>
+                        </label>
+                        <input type="url" name="original_source_url" class="input input-bordered" required>
+                    </div>
+
+                    <div class="card-actions justify-end">
+                        <button type="submit" class="btn btn-primary">Add Project</button>
+                        <a href="/solutions/projects" class="btn btn-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

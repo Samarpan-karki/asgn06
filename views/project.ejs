@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 4 - <%= project.title %></title>
+    <link href="/css/main.css" rel="stylesheet">
+</head>
+<body>
+    <%- include('partials/navbar', {page: page}) %>
+    
+    <div class="hero min-h-96 bg-base-200">
+        <div class="hero-content text-center">
+            <div class="max-w-2xl">
+                <h1 class="text-5xl font-bold"><%= project.title %></h1>
+                <p class="py-6">Below, you will find detailed information about the project: <%= project.title %></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mx-auto p-4 space-y-6">
+        <div class="card bg-base-100 shadow-xl">
+            <figure>
+                <img src="<%= project.feature_img_url %>" alt="<%= project.title %>" class="w-full h-64 object-cover">
+            </figure>
+        </div>
+
+        <div class="card bg-base-100 shadow-xl">
+            <div class="card-body">
+                <h2 class="card-title text-2xl">Project Overview</h2>
+                <div class="badge badge-primary badge-lg mb-4">
+                    <%= project.Sector.sector_name %> Sector
+                </div>
+                
+                <h3 class="text-xl font-semibold mt-4 mb-2">Introduction</h3>
+                <p class="text-base leading-relaxed"><%= project.intro_short %></p>
+                
+                <h3 class="text-xl font-semibold mt-6 mb-2">Impact</h3>
+                <p class="text-base leading-relaxed"><%= project.impact %></p>
+                
+<div class="card-actions justify-between mt-6">
+    <% if(session.user){ %>
+    <a href="/solutions/editProject/<%= project.id %>" class="btn btn-success">
+        Edit Project
+    </a>
+    <% } else { %>
+    <div></div>
+    <% } %>
+    <a href="<%= project.original_source_url %>" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+        More Information
+    </a>
+</div>
+            </div>
+        </div>
+
+        <div class="card bg-base-100 shadow-xl">
+            <div class="card-body">
+                <h2 class="card-title">Inspirational Quote</h2>
+                <div id="quote-container" class="mt-4">
+                    <div class="loading loading-spinner loading-lg mx-auto block"></div>
+                    <p id="quote-text" class="text-lg italic text-center hidden"></p>
+                    <p id="quote-author" class="text-right font-semibold mt-2 hidden"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-between items-center">
+            <button onclick="history.back(); return false;" class="btn btn-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back
+            </button>
+            <a href="/solutions/projects" class="btn btn-outline">
+                View All Projects
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch('https://dummyjson.com/quotes/random')
+                .then(response => response.json())
+                .then(data => {
+                    const loader = document.querySelector('.loading');
+                    const quoteText = document.getElementById('quote-text');
+                    const quoteAuthor = document.getElementById('quote-author');
+                    
+                    loader.style.display = 'none';
+                    quoteText.textContent = `"${data.quote}"`;
+                    quoteAuthor.textContent = `— ${data.author}`;
+                    quoteText.classList.remove('hidden');
+                    quoteAuthor.classList.remove('hidden');
+                })
+                .catch(error => {
+                    console.error('Error fetching quote:', error);
+                    const loader = document.querySelector('.loading');
+                    const quoteText = document.getElementById('quote-text');
+                    
+                    loader.style.display = 'none';
+                    quoteText.textContent = 'Unable to load quote at this time.';
+                    quoteText.classList.remove('hidden');
+                });
+        });
+    </script>
+</body>
+</html>

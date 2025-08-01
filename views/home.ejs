@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="nord">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Solutions</title>
+    <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+    <%- include('partials/navbar', {page: ''}) %>
+
+    <div class="container mx-auto p-4">
+        <div class="hero bg-base-200 rounded-lg p-8 my-8 shadow-lg">
+            <div class="hero-content text-left justify-start w-full">
+                <div class="max-w-xl">
+                    <h1 class="text-5xl font-bold">Climate Solutions</h1>
+                    <p class="py-5">
+                        WE NEED TO SAVE OUR PLANET
+                    </p>
+                    <a class="btn btn-primary" href="/solutions/projects">Explore Projects</a>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="text-3xl font-bold text-center my-8">Featured Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="card w-full bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
+                <figure>
+                    <img src="https://drawdown.org/sites/default/files/solutions2020/solution_recycledmetals_0.jpg"
+                         alt="Recycled Metals">
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">Recycled Metals</h2>
+                    <p>Metals are extracted from nonrenewable ores. Recycled metals capitalize on already extracted materials—making it possible to produce goods more efficiently, reduce the need to extract new resources, and cut down on energy and water use.</p>
+                    <div class="card-actions justify-end">
+                        <a class="btn btn-primary" href="/solutions/projects/17">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card w-full bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
+                <figure>
+                    <img src="https://drawdown.org/sites/default/files/solutions/solution_recycledpaper01.jpg"
+                         alt="Recycled Paper">
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">Recycled Paper</h2>
+                    <p>Reprocessing used paper curtails extraction of virgin feedstock and lowers emissions.</p>
+                    <div class="card-actions justify-end">
+                        <a class="btn btn-primary" href="/solutions/projects/22">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card w-full bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1">
+                <figure>
+                    <img src="https://drawdown.org/sites/default/files/solutions2020/solution_recycledplastics.jpg" 
+                         alt="Recycled Plastics">
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">Recycled Plastics</h2>
+                    <p>Recycling plastics requires less energy than producing new materials and relieves demand for fossil-fuel-based raw materials. It also saves landfill space and reduces environmental pollution.</p>
+                    <div class="card-actions justify-end">
+                        <a class="btn btn-primary" href="/solutions/projects/27">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<div class="navbar bg-base-100">
+  <div class="navbar-start">
+    <a class="btn btn-ghost text-xl" href="/">Climate Solutions</a>
+  </div>
+  
+  <div class="navbar-center">
+    <ul class="menu menu-horizontal px-1">
+      <li><a class="<%= (page == '/') ? 'active' : '' %>" href="/">Home</a></li>
+      <li><a class="<%= (page == '/about') ? 'active' : '' %>" href="/about">About</a></li>
+      <li><a class="<%= (page == '/solutions/projects') ? 'active' : '' %>" href="/solutions/projects">Projects</a></li>
+    </ul>
+  </div>
+  
+  <div class="navbar-end">
+    <ul class="menu menu-horizontal px-1">
+      <% if(session.user){ %>
+      <li>
+        <details>
+          <summary>Account: <%= session.user.userName %></summary>
+          <ul class="p-2 bg-base-100 right-0">
+            <li><a href="/solutions/addProject">Add Project</a></li>
+            <li><a href="/userHistory">User History</a></li>
+            <li><a href="/logout">Log Out</a></li>
+          </ul>
+        </details>
+      </li>
+      <% } else { %>
+      <li>
+        <details>
+          <summary>Account</summary>
+          <ul class="p-2 bg-base-100 right-0">
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+          </ul>
+        </details>
+      </li>
+      <% } %>
+    </ul>
+  </div>
+</div>

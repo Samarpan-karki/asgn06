@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="nord">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Climate Solutions</title>
+    <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+    <%- include('partials/navbar', {page: '/login'}) %>
+
+    <div class="hero bg-base-200">
+        <div class="hero-content text-center">
+            <div>
+                <h1 class="text-4xl font-bold">Login</h1>
+                <p class="py-4">Please sign in to your account</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mx-auto p-4 max-w-sm">
+        <div class="card bg-base-100 shadow-xl">
+            <div class="card-body">
+                <h2 class="card-title">Sign In</h2>
+                
+                <% if(errorMessage) { %>
+                <div class="alert alert-error">
+                    <span>X <%= errorMessage %></span>
+                </div>
+                <% } %>
+                
+                <form action="/login" method="POST">
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">User Name</span>
+                        </label>
+                        <input type="text" 
+                               name="userName" 
+                               placeholder="User Name" 
+                               class="input input-bordered" 
+                               value="<%= userName %>"
+                               required>
+                    </div>
+
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text">Password</span>
+                        </label>
+                        <input type="password" 
+                               name="password" 
+                               placeholder="Password" 
+                               class="input input-bordered" 
+                               required>
+                    </div>
+
+                    <div class="form-control mt-4">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+
+                <div class="text-center mt-4">
+                    <p>Don't have an account?</p>
+                    <a href="/register" class="btn btn-outline btn-sm">Create Account</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

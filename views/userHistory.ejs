@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="nord">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User History - Climate Solutions</title>
+    <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+    <%- include('partials/navbar', {page: '/userHistory'}) %>
+
+    <div class="hero bg-base-200">
+        <div class="hero-content text-center">
+            <div>
+                <h1 class="text-4xl font-bold">User History</h1>
+                <p class="py-4">Welcome, <strong><%= session.user.userName %></strong>!</p>
+                <p>Email: <%= session.user.email %></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mx-auto p-4">
+        <div class="card bg-base-100 shadow-xl">
+            <div class="card-body">
+                <h2 class="card-title">Login History</h2>
+                
+                <% if(session.user.loginHistory && session.user.loginHistory.length > 0) { %>
+                <div class="overflow-x-auto">
+                    <table class="table table-zebra">
+                        <thead>
+                            <tr>
+                                <th>Login Date/Time</th>
+                                <th>Browser Info</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% session.user.loginHistory.forEach(function(login) { %>
+                            <tr>
+                                <td>
+                                    <%= new Date(login.dateTime).toLocaleString() %>
+                                </td>
+                                <td>
+                                    <%= login.userAgent.length > 50 ? 
+                                        login.userAgent.substring(0, 50) + '...' : 
+                                        login.userAgent %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+                <% } else { %>
+                <div class="alert alert-info">
+                    <span>No login history available yet.</span>
+                </div>
+                <% } %>
+            </div>
+        </div>
+
+        <div class="flex justify-between mt-6">
+            <a href="/solutions/projects" class="btn btn-primary">View Projects</a>
+            <a href="/solutions/addProject" class="btn btn-success">Add Project</a>
+            <a href="/logout" class="btn btn-error">Logout</a>
+        </div>
+    </div>
+</body>
+</html>

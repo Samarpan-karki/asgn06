@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 5 - Projects</title>
+    <link href="/css/main.css" rel="stylesheet">
+</head>
+<body>
+    <%- include('partials/navbar', {page: page}) %>
+    
+    <div class="hero min-h-96 bg-base-200">
+        <div class="hero-content text-center">
+            <div class="max-w-lg">
+                <h1 class="text-5xl font-bold">Projects</h1>
+                <p class="py-6">Explore our portfolio of innovative projects across various sectors.</p>
+                <div class="flex gap-2 justify-center flex-wrap">
+                    <a href="/solutions/projects" class="btn btn-outline">All Projects</a>
+                    <a href="/solutions/projects?sector=Industry" class="btn btn-primary">Industry</a>
+                    <a href="/solutions/projects?sector=Transportation" class="btn btn-primary">Transportation</a>
+                    <a href="/solutions/projects?sector=Land Sinks" class="btn btn-primary">Land Sinks</a>
+                    <a href="/solutions/projects?sector=Electricity" class="btn btn-primary">Electricity</a>
+                    <a href="/solutions/projects?sector=Food, Agriculture, and Land Use" class="btn btn-primary">Agriculture</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mx-auto p-4">
+        <div class="card bg-base-100 shadow-xl">
+            <div class="card-body">
+                <h2 class="card-title">Project Portfolio (<%= projects.length %> projects)</h2>
+                
+                <div class="overflow-x-auto mt-4">
+                    <table class="table table-zebra w-full">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Sector</th>
+                                <th>Summary</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% projects.forEach(function(project) { %>
+                            <tr>
+                                <td>
+                                    <div class="font-bold"><%= project.title %></div>
+                                </td>
+                                <td>
+                                    <a href="/solutions/projects?sector=<%= project.Sector.sector_name %>" class="btn btn-sm btn-outline">
+                                        <%= project.Sector.sector_name %>
+                                    </a>
+                                </td>
+                                <td>
+                                    <div class="text-sm opacity-75 max-w-xs">
+                                        <%= project.summary_short %>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="/solutions/projects/<%= project.id %>" class="btn btn-sm btn-primary">
+                                        Details
+                                    </a>
+                                </td>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
